@@ -1,0 +1,18 @@
+// Récupération de la valeur de DATE_1_INDEX
+var dateIndex = getTextFromIndexInfo(getFirstIndexFromID(pParameters, "DATE_1_INDEX"));
+
+// Vérification que la valeur de dateIndex n'est pas vide
+if (dateIndex && dateIndex.trim() !== "") {
+    var dateParts = dateIndex.split("/"); // Découpe la date au format JJ/MM/AAAA
+
+    if (dateParts.length === 3) {
+        var annee = dateParts[2]; // Extraction de l'année (index 2)
+        return annee; // Retourne l'année
+    }
+} 
+
+// Si la date est invalide ou vide
+return "Date invalide";
+
+
+

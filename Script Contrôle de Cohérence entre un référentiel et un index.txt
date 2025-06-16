@@ -1,0 +1,21 @@
+// Récupération de la valeur de EMAIL_INDEX
+var emailIndex = getTextFromIndexInfo(getFirstIndexFromID(pParameters, "EMAIL_INDEX")).trim().toLowerCase();
+
+// Fonction pour récupérer une variable de la troisième partie
+var getThirdPartVariable = function(pID) {
+    for (var i = 0; i < THIRDPART.values.length; i++) {
+        if (THIRDPART.values[i].id == pID)
+            return THIRDPART.values[i].rawValue;
+    }
+    return "";
+};
+
+// Récupération de la valeur de BPE_EMAIL_INDEX
+var bpeEmailIndex = getThirdPartVariable("BPE_EMAIL_INDEX").trim().toLowerCase();
+
+// Vérification de l'égalité entre BPE_EMAIL_INDEX et EMAIL_INDEX
+if (emailIndex === bpeEmailIndex) {
+    return "OK";  // Les valeurs sont identiques
+} else {
+    return "NON"; // Les valeurs sont différentes
+}

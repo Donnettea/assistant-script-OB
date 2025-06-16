@@ -1,0 +1,63 @@
+// Récupération de la valeur de MAIL_INDEX
+
+var mailIndex = getTextFromIndexInfo(getFirstIndexFromID(pParameters, "MAIL_INDEX"));
+ 
+// Vérification de la valeur dans MAIL_INDEX
+
+if (mailIndex && mailIndex.trim() !== "") {
+
+    // Expression régulière pour capturer la partie avant "@" et après "@"
+
+    var emailPattern = /^([^@]+)@(.*)$/;
+
+    var match = mailIndex.match(emailPattern);
+ 
+    if (match) {
+
+        var username = match[1]; // Partie avant "@"
+
+        var domain = match[2].toLowerCase(); // Partie après "@", en minuscule
+
+        var correctedEmail = mailIndex; // Par défaut, l'email reste inchangé
+ 
+        // Correction du domaine en fonction des cas spécifiques
+
+        if (domain.includes("hotmaail")) {
+
+            correctedEmail = `${username}@hotmail.fr`;
+
+        } else if (domain.includes("sffr") || domain.includes("sfrr")) {
+
+            correctedEmail = `${username}@sfr.fr`; // Remplacer "sffr" ou "sfrr" par "sfr.fr"
+
+        } else if (domain.includes("orange..")) {
+
+            correctedEmail = `${username}@orange.fr`;
+
+        } else if (domain.includes("hootmail")) {
+
+            correctedEmail = `${username}@hotmail.fr`; // Remplacer "hootmail" par "hotmail.fr"
+
+        }
+ 
+        // Si l'email a été modifié, on retourne l'email corrigé, sinon on retourne l'original
+
+        return correctedEmail;
+
+    } else {
+
+        // Si l'e-mail n'a pas un format valide, on le laisse inchangé
+
+        return mailIndex;
+
+    }
+
+} else {
+
+    // Si MAIL_INDEX est vide ou invalide, on retourne "NON"
+
+    return "NON";
+
+}
+
+ 

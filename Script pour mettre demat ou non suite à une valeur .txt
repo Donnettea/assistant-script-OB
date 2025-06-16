@@ -1,0 +1,9 @@
+// Récupération de la valeur de EMAIL_INDEX
+var emailIndex = getTextFromIndexInfo(getFirstIndexFromID(pParameters, "EMAIL_INDEX"));
+
+// Vérification de la présence d'une valeur dans EMAIL_INDEX
+if (emailIndex && emailIndex.trim() !== "") {
+    return "DEMAT";  // Retourne "OK" si emailIndex contient quelque chose
+} else {
+    return "NON DEMAT"; // Retourne "NON" si emailIndex est vide ou invalide
+}

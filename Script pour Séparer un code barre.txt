@@ -1,0 +1,65 @@
+var cbIndex = getTextFromIndexInfo(getFirstIndexFromID(pParameters, "CB_INDEX"));
+
+if (cbIndex && cbIndex.trim() !== "") {
+    var parts = cbIndex.split("*");  // On découpe selon '*'
+
+    // Log pour vérifier le découpage
+    return parts[1]
+    
+    // Si tu veux remplir la métadonnée avec la deuxième partie
+    if (parts[1]) {
+        setTextIntoIndexFromID(pParameters, "CODE_TIERS_INDEX", parts[1]);
+    }
+
+    return "Partie avant le premier * : " + parts[0] + " | Partie entre les * : " + parts[1];
+
+} else {
+    return "CB vide ou invalide";
+}
+
+
+
+
+
+
+
+--------------------------------------------
+
+var cbIndex = getTextFromIndexInfo(getFirstIndexFromID(pParameters, "CB_INDEX"));
+ 
+if (cbIndex && cbIndex.trim() !== "") {
+    var firstPart = cbIndex.split("*")[0];
+ 
+    // Log ou retour pour vérifier
+    return  firstPart;
+ 
+    // Quand ça marche, décommente pour écrire dans DATE_INDEX
+    // setTextIntoIndexFromID(pParameters, "DATE_INDEX", firstPart);
+} else {
+    return "CB vide ou invalide";
+}
+
+
+--------------------------------------------
+
+
+var cbIndex = getTextFromIndexInfo(getFirstIndexFromID(pParameters, "CB_INDEX"));
+
+if (cbIndex && cbIndex.trim() !== "") {
+    // Découpe selon '*' et vérifie le découpage
+    var parts = cbIndex.split("*");  
+
+    // Vérifie qu'il y a bien trois parties
+    if (parts.length === 3) {
+        var thirdPart = parts[2];  // Récupère la troisième partie (après les deux '*')
+
+        // Retourne uniquement la troisième partie (509 dans ton exemple)
+        return thirdPart;
+    } else {
+        return "Le format n'a pas exactement trois parties séparées par '*'";
+    }
+
+} else {
+    return "CB vide ou invalide";
+}
+

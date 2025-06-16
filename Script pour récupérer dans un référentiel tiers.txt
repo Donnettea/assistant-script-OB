@@ -1,0 +1,10 @@
+var getThirdPartVariable = function(pID) {
+    for (var i = 0; i < THIRDPART.values.length; i++) {
+        if (THIRDPART.values[i].id === pID)
+            return THIRDPART.values[i].rawValue || "";
+    }
+    return "";
+};
+
+var mailPartageIndex = getThirdPartVariable("MAIL_PARTAGE_INDEX");
+return mailPartageIndex;
